@@ -1,0 +1,73 @@
+:root{
+  --bg-start: #f7fbff;
+  --bg-end: #eef6ff;
+  --card-bg: #ffffff;
+  --text-color: #0f172a;
+  --accent: #06a6f0;
+  --cta: #ff7a59;
+  --card-gradient: #fbfdff;
+  --muted: #6b7280;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  color: var(--text-color);
+}
+
+.page {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+h1 {
+  margin-bottom: 16px;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  min-width: 280px;
+  background: linear-gradient(180deg, var(--card-bg), var(--card-gradient));
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+  color: var(--text-color);
+  border: 1px solid rgba(6,166,240,0.06);
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.btn:hover{
+  filter: brightness(0.95);
+}
+
+input, select, textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e6eef8;
+  background: #fbfdff;
+  color: var(--text-color);
+}
