@@ -1,12 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
-
-import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./pages/Register";
 
 /* Student */
 import StudentDashboard from "./student/StudentDashboard";
@@ -31,113 +27,27 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* PUBLIC ROUTES */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
+        {/* Login */}
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* STUDENT ROUTES */}
-        <Route
-          path="/student"
-          element={
-            <ProtectedRoute allowedRole="student">
-              <StudentDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student/modules"
-          element={
-            <ProtectedRoute allowedRole="student">
-              <ViewModules />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student/progress"
-          element={
-            <ProtectedRoute allowedRole="student">
-              <TrackProgress />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student/update"
-          element={
-            <ProtectedRoute allowedRole="student">
-              <UpdateProgress />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student/test"
-          element={
-            <ProtectedRoute allowedRole="student">
-              <TakeTest />
-            </ProtectedRoute>
-          }
-        />
+        {/* Student Routes */}
+        <Route path="/student" element={<StudentDashboard />} />
+        <Route path="/student/modules" element={<ViewModules />} />
+        <Route path="/student/progress" element={<TrackProgress />} />
+        <Route path="/student/update" element={<UpdateProgress />} />
+        <Route path="/student/test" element={<TakeTest />} />
 
-        {/* ADMIN ROUTES */}
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute allowedRole="admin">
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/add"
-          element={
-            <ProtectedRoute allowedRole="admin">
-              <AddModule />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/view"
-          element={
-            <ProtectedRoute allowedRole="admin">
-              <ViewAdminModules />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/delete"
-          element={
-            <ProtectedRoute allowedRole="admin">
-              <DeleteModule />
-            </ProtectedRoute>
-          }
-        />
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/add" element={<AddModule />} />
+        <Route path="/admin/view" element={<ViewAdminModules />} />
+        <Route path="/admin/delete" element={<DeleteModule />} />
 
-        {/* MANAGER ROUTES */}
-        <Route
-          path="/manager"
-          element={
-            <ProtectedRoute allowedRole="manager">
-              <ManagerDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/manager/reports"
-          element={
-            <ProtectedRoute allowedRole="manager">
-              <ViewReports />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/manager/analytics"
-          element={
-            <ProtectedRoute allowedRole="manager">
-              <Analytics />
-            </ProtectedRoute>
-          }
-        />
+        {/* Manager Routes */}
+        <Route path="/manager" element={<ManagerDashboard />} />
+        <Route path="/manager/reports" element={<ViewReports />} />
+        <Route path="/manager/analytics" element={<Analytics />} />
 
         {/* 404 */}
         <Route path="*" element={<NotFound />} />

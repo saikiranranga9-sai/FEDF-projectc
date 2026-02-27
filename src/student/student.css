@@ -1,3 +1,5 @@
+/* ===== STUDENT THEME ===== */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -5,22 +7,26 @@ body {
   color: white;
 }
 
+/* Page Wrapper */
 .page {
   width: 90%;
   margin: 40px auto;
 }
 
+/* Page Titles */
 .page h1 {
   margin-bottom: 25px;
   font-size: 28px;
 }
 
+/* Grid Layout */
 .card-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
+/* Card Style */
 .card {
   flex: 1;
   min-width: 260px;
@@ -36,6 +42,7 @@ body {
   transform: translateY(-6px);
 }
 
+/* Buttons */
 .btn {
   margin-top: 12px;
   padding: 8px 16px;
@@ -53,6 +60,7 @@ body {
   transform: scale(1.05);
 }
 
+/* Form Inputs */
 input,
 select,
 textarea {
@@ -64,12 +72,14 @@ textarea {
   outline: none;
 }
 
+/* Labels */
 label {
   font-weight: 500;
   margin-top: 10px;
   display: block;
 }
 
+/* Progress Bar */
 .progress-bar {
   width: 100%;
   background: rgba(255,255,255,0.2);
@@ -87,6 +97,7 @@ label {
   transition: width 0.5s ease;
 }
 
+/* Test Score Display */
 .score {
   margin-top: 15px;
   font-size: 18px;
@@ -94,6 +105,7 @@ label {
   color: #00ffcc;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .card-grid {
     flex-direction: column;

@@ -1,37 +1,15 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 
-export default function NavBar() {
+export default function NavBar({ role }) {
   const navigate = useNavigate();
-
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
-  const role = user?.role;
-  const location = useLocation();
-
-  const showRoleLinks = role && location.pathname.startsWith(`/${role}`);
-
-  const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
-    navigate("/login");
-  };
 
   return (
     <div className="navbar">
-      <h2 className="logo">LearnTrack</h2>
+      <h2>Learning Progress Tracker</h2>
 
       <div className="nav-links">
-
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-
-        {!role && (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
-
-        {showRoleLinks && role === "student" && (
+        {role === "student" && (
           <>
             <Link to="/student">Dashboard</Link>
             <Link to="/student/modules">Modules</Link>
@@ -39,7 +17,8 @@ export default function NavBar() {
             <Link to="/student/test">Test</Link>
           </>
         )}
-        {showRoleLinks && role === "admin" && (
+
+        {role === "admin" && (
           <>
             <Link to="/admin">Dashboard</Link>
             <Link to="/admin/add">Add Module</Link>
@@ -47,7 +26,8 @@ export default function NavBar() {
             <Link to="/admin/delete">Delete Module</Link>
           </>
         )}
-        {showRoleLinks && role === "manager" && (
+
+        {role === "manager" && (
           <>
             <Link to="/manager">Dashboard</Link>
             <Link to="/manager/reports">Reports</Link>
@@ -55,11 +35,9 @@ export default function NavBar() {
           </>
         )}
 
-        {role && (
-          <button className="logout-btn" onClick={handleLogout}>
-            Logout
-          </button>
-        )}
+        <button className="logout-btn" onClick={() => navigate("/")}>
+          Logout
+        </button>
       </div>
     </div>
   );

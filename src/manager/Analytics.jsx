@@ -20,7 +20,7 @@ export default function Analytics() {
       <NavBar role="manager" />
 
       <div className="page">
-        <h1> System Analytics</h1>
+        <h1>System Analytics</h1>
 
         <div className="card-grid">
 

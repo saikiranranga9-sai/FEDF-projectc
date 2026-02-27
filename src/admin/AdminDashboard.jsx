@@ -10,7 +10,7 @@ export default function AdminDashboard() {
       <NavBar role="admin" />
 
       <div className="page">
-        <h1>🛠 Admin Dashboard</h1>
+        <h1>Admin Dashboard</h1>
 
         <div className="card-grid">
 

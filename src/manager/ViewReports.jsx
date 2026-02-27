@@ -18,7 +18,7 @@ export default function ViewReports() {
       <NavBar role="manager" />
 
       <div className="page">
-        <h1> Detailed Reports</h1>
+        <h1>Detailed Reports</h1>
 
         <div className="card">
           <label>Search Student</label>

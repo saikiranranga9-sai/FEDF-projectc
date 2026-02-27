@@ -1,71 +1,93 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import "./register.css";
-
 
 export default function Register() {
   const navigate = useNavigate();
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    role: "",
-    username: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const [role, setRole] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleRegister = () => {
-    if (!form.name || !form.email || !form.role || !form.username || !form.password) {
+    if (!role || !username || !password) {
       alert("Please fill all fields");
       return;
     }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const userExists = users.find(
-      (u) => u.username === form.username
-    );
+    const userExists = users.find((u) => u.username === username);
 
     if (userExists) {
       alert("Username already exists");
       return;
     }
 
-    users.push(form);
+    users.push({ role, username, password });
+
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Registration Successful!");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
-    <>
-      <NavBar />
-      <div className="register-container">
-        <div className="register-card">
-          <h2>Create Account</h2>
+    <div style={styles.container}>
+      <div style={styles.card}>
+        <h2>Register</h2>
 
-          <input name="name" placeholder="Full Name" onChange={handleChange} />
-          <input name="email" placeholder="Email" onChange={handleChange} />
+        <select value={role} onChange={(e) => setRole(e.target.value)}>
+          <option value="">Select Role</option>
+          <option value="student">Student</option>
+          <option value="admin">Admin</option>
+          <option value="manager">Manager</option>
+        </select>
 
-          <select name="role" onChange={handleChange}>
-            <option value="">Select Role</option>
-            <option value="student">Student</option>
-            <option value="manager">Manager</option>
-            <option value="admin">Admin</option>
-          </select>
+        <input
+          type="text"
+          placeholder="Create Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
-          <input name="username" placeholder="Username" onChange={handleChange} />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+        <input
+          type="password"
+          placeholder="Create Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-          <button onClick={handleRegister}>Register</button>
-        </div>
+        <button onClick={handleRegister}>Register</button>
+
+        <p>
+          Already have an account?{" "}
+          <span style={styles.link} onClick={() => navigate("/")}>
+            Login
+          </span>
+        </p>
       </div>
-    </>
+    </div>
   );
 }
+
+const styles = {
+  container: {
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  card: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    padding: "30px",
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+    width: "300px",
+  },
+  link: {
+    color: "blue",
+    cursor: "pointer",
+  },
+};

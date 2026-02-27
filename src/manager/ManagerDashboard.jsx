@@ -12,7 +12,7 @@ export default function ManagerDashboard() {
       <NavBar role="manager" />
 
       <div className="page">
-        <h1>📊 Manager Dashboard</h1>
+        <h1>Manager Dashboard</h1>
 
         <div className="card-grid">
 

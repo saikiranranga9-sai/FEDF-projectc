@@ -11,7 +11,7 @@ export default function StudentDashboard() {
       <NavBar role="student" />
 
       <div className="page">
-        <h1> Student Dashboard</h1>
+        <h1>Student Dashboard</h1>
 
         <div className="card-grid">
 
@@ -24,7 +24,7 @@ export default function StudentDashboard() {
           </div>
 
           <div className="card">
-            <h3> View Modules</h3>
+            <h3>View Modules</h3>
             <p>Access all learning modules added by Admin.</p>
             <Link to="/student/modules">
               <button className="btn">Open Modules</button>
@@ -32,7 +32,7 @@ export default function StudentDashboard() {
           </div>
 
           <div className="card">
-            <h3> Track Progress</h3>
+            <h3>Track Progress</h3>
             <p>Total Courses: {Object.keys(progress).length}</p>
             <Link to="/student/progress">
               <button className="btn">View Progress</button>
@@ -40,7 +40,7 @@ export default function StudentDashboard() {
           </div>
 
           <div className="card">
-            <h3> Take Test</h3>
+            <h3>Take Test</h3>
             <p>Attempt quick module test.</p>
             <Link to="/student/test">
               <button className="btn">Start Test</button>
